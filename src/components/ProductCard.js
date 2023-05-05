@@ -1,6 +1,6 @@
-import plantImage from "./images/plant.webp";
+import plantImage from "../images/plant.webp";
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, addToCart }) => {
   return (
     <div className="product-card">
       <img
@@ -12,6 +12,7 @@ export const ProductCard = ({ product }) => {
       <h3>{product.productName}</h3>
       <h4>£{product.price}</h4>
       <p>{product.desc}</p>
+      <button onClick={() => addToCart(product)}>Add to cart</button>
     </div>
   );
 };

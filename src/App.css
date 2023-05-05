@@ -19,7 +19,7 @@
 }
 
 .header h1 {
-  padding-left: 20px;
+  padding: 20px;
 }
 
 .header a {
@@ -37,6 +37,8 @@
 .header nav a {
   text-decoration: none;
   color: white;
+  padding: 20px;
+  font-size: 1.4rem;
 }
 
 .product-container {
