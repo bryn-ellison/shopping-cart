@@ -1,3 +1,5 @@
+import plantImage from "../images/plant.webp";
+
 function CartCard({ cartItem, cartItems, addToCart, removeFromCart }) {
   const price =
     cartItem.reduce((acc, item) => acc + item.price, 0) /
@@ -12,12 +14,15 @@ function CartCard({ cartItem, cartItems, addToCart, removeFromCart }) {
 
   return (
     <div className="cart-card">
-      <h3>{cartItem[0].productName}</h3>
-      <p>£{price}</p>
-      <div className="quantity-container">
-        <button onClick={() => removeFromCart(getProduct())}>-</button>
-        <p>{quantity}</p>
-        <button onClick={() => addToCart(getProduct())}>+</button>
+      <img src={plantImage} alt="a plant" height={150} width={150}></img>
+      <div className="cartcard-info-wrapper">
+        <h3>{cartItem[0].productName}</h3>
+        <p>£{price}</p>
+        <div className="quantity-container">
+          <button onClick={() => removeFromCart(getProduct())}>-</button>
+          <p>{quantity}</p>
+          <button onClick={() => addToCart(getProduct())}>+</button>
+        </div>
       </div>
     </div>
   );

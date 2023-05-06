@@ -9,6 +9,17 @@ import Home from "./components/Home";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+
+  const numCartItems = cartItems.length;
+
+  const toggleCart = () => {
+    if (showCart === false) {
+      setShowCart(true);
+    } else {
+      setShowCart(false);
+    }
+  };
 
   const addToCart = (item) => {
     setCartItems((prevArray) => [...prevArray, item]);
@@ -27,12 +38,16 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
-      <Cart
-        cartItems={cartItems}
-        addToCart={addToCart}
-        removeFromCart={removeFromCart}
-      />
+      <Header numCartItems={numCartItems} toggleCart={toggleCart} />
+      {showCart ? (
+        <Cart
+          cartItems={cartItems}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          toggleCart={toggleCart}
+        />
+      ) : null}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products addToCart={addToCart} />} />

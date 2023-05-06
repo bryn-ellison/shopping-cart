@@ -1,6 +1,6 @@
 import CartCard from "./CartCard";
 
-function Cart({ cartItems, addToCart, removeFromCart }) {
+function Cart({ cartItems, addToCart, removeFromCart, toggleCart }) {
   const displayCart = () => {
     let newCartArray = [...cartItems];
     const groupByKey = (list, key) =>
@@ -32,7 +32,7 @@ function Cart({ cartItems, addToCart, removeFromCart }) {
   const total = getTotalPrice();
 
   return (
-    <div className="Cart">
+    <div className="cart">
       <h1>Your cart</h1>
       <div className="cart-container">
         {sortedCart.map((cartItem, i) => {
@@ -46,8 +46,10 @@ function Cart({ cartItems, addToCart, removeFromCart }) {
             />
           );
         })}
-        <h3>Total: {total}</h3>
       </div>
+      <h3>Total: {total}</h3>
+      <button>Checkout</button>
+      <button onClick={() => toggleCart()}>Close</button>
     </div>
   );
 }
