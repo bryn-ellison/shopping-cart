@@ -14,10 +14,25 @@ function App() {
     setCartItems((prevArray) => [...prevArray, item]);
   };
 
+  const removeFromCart = (item) => {
+    const newArr = [...cartItems];
+    let index = newArr.findIndex((product) => product.id === item.id);
+    if (index >= 0) {
+      newArr.splice(index, 1);
+    } else {
+      return;
+    }
+    setCartItems(newArr);
+  };
+
   return (
     <BrowserRouter>
       <Header />
-      <Cart cartItems={cartItems} />
+      <Cart
+        cartItems={cartItems}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products addToCart={addToCart} />} />

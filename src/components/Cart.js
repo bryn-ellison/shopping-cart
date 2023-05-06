@@ -1,6 +1,6 @@
 import CartCard from "./CartCard";
 
-function Cart({ cartItems }) {
+function Cart({ cartItems, addToCart, removeFromCart }) {
   const displayCart = () => {
     let newCartArray = [...cartItems];
     const groupByKey = (list, key) =>
@@ -35,8 +35,16 @@ function Cart({ cartItems }) {
     <div className="Cart">
       <h1>Your cart</h1>
       <div className="cart-container">
-        {sortedCart.map((cartItem) => {
-          return <CartCard cartItem={cartItem} />;
+        {sortedCart.map((cartItem, i) => {
+          return (
+            <CartCard
+              key={i}
+              cartItem={cartItem}
+              cartItems={cartItems}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+            />
+          );
         })}
         <h3>Total: {total}</h3>
       </div>
