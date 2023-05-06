@@ -18,6 +18,19 @@ function Cart({ cartItems }) {
     return finalArr;
   };
   const sortedCart = displayCart();
+
+  const getTotalPrice = () => {
+    const newArr = [...cartItems];
+    let total = 0;
+    newArr.forEach((item) => (total += item.price));
+    const returnTotal = total / 100;
+    return returnTotal.toLocaleString("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    });
+  };
+  const total = getTotalPrice();
+
   return (
     <div className="Cart">
       <h1>Your cart</h1>
@@ -25,6 +38,7 @@ function Cart({ cartItems }) {
         {sortedCart.map((cartItem) => {
           return <CartCard cartItem={cartItem} />;
         })}
+        <h3>Total: {total}</h3>
       </div>
     </div>
   );
